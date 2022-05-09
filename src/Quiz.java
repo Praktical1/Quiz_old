@@ -9,8 +9,8 @@ public class Quiz {
         String Lockuser = "admin";
         String Lockpass = "Password123";
         Scanner in = new Scanner(System.in);
-        while (Username.equals("")){
-            boolean Lock = true;
+        while (Username.equals("")){        //
+            boolean Lock = true;            //Determines if lock is in effect
             while (Lock) {
                 System.out.println("Username:");
                 Username = in.nextLine();
@@ -43,41 +43,49 @@ public class Quiz {
         }
         System.out.println("Login successful");
         System.out.println("Welcome to Prak's Quiz");
-        ArrayList<String> Options = new ArrayList<String>();            //Created list for input values
-        Options.add("A");           //Added options one by one
-        Options.add("B");
-        Options.add("C");
-        Options.add("D");
-        System.out.println("What is Prak's Favourite food?");       //Question
+        System.out.println("What is Prak's Favourite food?");       //Question 1
         System.out.println("Is it...");
         System.out.println("A: Pizza");     //Possible Answers
         System.out.println("B: Banana");
         System.out.println("C: Cake");
         System.out.println("D: Lasagne");
         int Points = 0;         //Point counter
-        String choice = in.nextLine();          //takes value for choice
         boolean Q1 = false;         //Checks Question 1 is answered
-        while (Q1 == false){
-            switch (choice) {
-                case  Options.get(0):
-                    Points = Points + 1;
-                    Q1 = true;
-                    System.out.println("Correct");
-                case  Options.get(1):
-                    Q1 = true;
-                    System.out.println("Incorrect");
-                case  Options.get(2):
-                    Q1 = true;
-                    System.out.println("Incorrect");
-                case  Options.get(3):
-                    Q1 = true;
-                    System.out.println("Incorrect");
-                default:
-                    System.out.println("Invalid option, Try again");
+        while (!Q1){
+            String choice = in.nextLine();          //takes value for choice
+            if (choice.equalsIgnoreCase("A")) {
+                Points = Points + 1;
+                Q1 = true;
+                System.out.println("Yep, its yummy");
+            } else if(choice.equalsIgnoreCase("B")) {
+                Q1 = true;
+                System.out.println("I ain't no monkeh");
+            } else if(choice.equalsIgnoreCase("C")) {
+                Q1 = true;
+                System.out.println("Close but not quite");
+            } else if(choice.equalsIgnoreCase("D")) {
+                Q1 = true;
+                System.out.println("Was...once upon a time");
+            } else if(choice=="") {
+                System.out.println("Please Select an answer");
+            } else {
+                System.out.println("Invalid option, Try again");
+            }
         }
+        System.out.println("What is Prak's Favourite colour?");       //Question 2
+        System.out.println("Is it...");
+        System.out.println("A: Red");     //Possible Answers
+        System.out.println("B: Green");
+        System.out.println("C: Blue");
+        System.out.println("D: Black");
+        boolean Q2 = false;         //Checks Question 2 is answered
+        System.out.println("What is Prak's Favourite game?");       //Question 3
+        System.out.println("Is it...");
+        System.out.println("A: Rocket League");     //Possible Answers
+        System.out.println("B: League of Legends");
+        System.out.println("C: Valorant");
+        System.out.println("D: Age of Darkness:Final Stand");
+        boolean Q3 = false;         //Checks Question 3 is answered
 
-
-
-        }
     }
 }
