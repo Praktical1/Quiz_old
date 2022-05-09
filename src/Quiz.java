@@ -98,7 +98,7 @@ public class Quiz {
                 System.out.println(Errors[1]);
             }
         }
-        System.out.println(" ");                                    //gap between lines to improve user experience
+        System.out.println("  ");                                    //gap between lines to improve user experience
         System.out.println("What is Prak's Favourite game?");       //Question 3
         System.out.println("Is it...");
         System.out.println("A: Rocket League");                     //Possible Answers
