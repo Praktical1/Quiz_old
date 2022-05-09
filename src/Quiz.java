@@ -74,7 +74,7 @@ public class Quiz {
                 System.out.println(Errors[1]);
             }
         }
-        System.out.print("\n\nWhat is Prak's Favourite colour?\nIs it...\nA: Red\nB: Green\nC: Blue\nD: Black\nPlease select either A,B,C or D:\n");                                        //Question 2 with possible answers included - different approach - reduced line count but readability obscured
+        System.out.print("\n\nWhat is Prak's Favourite colour?\nIs it...\nA: Red\nB: Green\nC: Blue\nD: Black\nPlease select either A,B,C or D:\n");   //Question 2 with possible answers included - different approach - reduced line count but readability obscured
         String[] ResponsesQ2 = {"Not a fan tbh","*Sick Face*","Cool as the seas *sunglasses smiley*","Go to for looking nice but not favourite"};      //Stored responses in array for more readability of code
         Qlock = false;         //Checks Question 2 is answered
         while (!Qlock){
@@ -98,7 +98,7 @@ public class Quiz {
                 System.out.println(Errors[1]);
             }
         }
-        System.out.println("  ");                                    //gap between lines to improve user experience
+        System.out.println(" ");                                    //gap between lines to improve user experience
         System.out.println("What is Prak's Favourite game?");       //Question 3
         System.out.println("Is it...");
         System.out.println("A: Rocket League");                     //Possible Answers
