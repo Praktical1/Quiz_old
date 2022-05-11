@@ -8,11 +8,11 @@ public class Quiz {
         String Username = "";           //
         ArrayList<String> LoginDatabase = new ArrayList<>(Arrays.asList("admin","Password123"));
         Scanner in = new Scanner(System.in);
-        System.out.println("(N)New or (E)Existing User?");
-        System.out.println("Please respond with either N or E as appropriate");
-        String Menuchoice = in.nextLine();
         boolean Login = false;
         while (!Login) {
+            System.out.println("(N)New or (E)Existing User?");
+            System.out.println("Please respond with either N or E as appropriate");
+            String Menuchoice = in.nextLine();
             if (Menuchoice.equalsIgnoreCase("N")){
                 System.out.println("New Username:");
                 String NewUser = in.nextLine();                   //New Username input
@@ -29,6 +29,7 @@ public class Quiz {
                             LoginDatabase.add(NewUser);
                             LoginDatabase.add(NewPass);
                             Login = true;
+                            break;
                         }
                     }
                 } else {
