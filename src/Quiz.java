@@ -42,7 +42,7 @@ public class Quiz {
                     System.out.println("Passwords do not match, Please try again"); //Error message when new password doesn't match password confirmation
                 }
             } else if (Menuchoice.equalsIgnoreCase("E")){
-                System.out.print("\nLogin\n\n");                                    //Sends user to login
+                System.out.print("\n|Login|\n");                                    //Sends user to login
                 Login = true;
             } else {
                 System.out.println("Invalid input, please choose either \"N\" or \"E\"");       //Informs user that input doesn't match requirements
@@ -52,8 +52,14 @@ public class Quiz {
         //Login Loop
         boolean Lock = true;            //Determines if lock is in effect
         while (Lock) {
-            System.out.println("Username:");
-            Username = in.nextLine();               //Username input
+            Username="";
+            while (Username == ""){
+                System.out.println("Username:");
+                Username = in.nextLine();               //Username input
+                if (Username == "") {
+                    System.out.println("Please Enter a Username");
+                }
+            }
             System.out.println("Password:");
             String Password = in.nextLine();        //Password input
             String Lockpass = null;
