@@ -8,16 +8,55 @@ public class Quiz {
         String Username = "";           //
         ArrayList<String> LoginDatabase = new ArrayList<>(Arrays.asList("admin","Password123"));
         Scanner in = new Scanner(System.in);
+        System.out.println("(N)New or (E)Existing User?");
+        System.out.println("Please respond with either N or E as appropriate");
+        String Menuchoice = in.nextLine();
+        boolean Login = false;
+        while (!Login) {
+            if (Menuchoice.equalsIgnoreCase("N")){
+                System.out.println("New Username:");
+                String NewUser = in.nextLine();                   //New Username input
+                System.out.println("New Password:");
+                String NewPass = in.nextLine();             //New Password input
+                System.out.println("Confirm Password");
+                String Passconfirm = in.nextLine();         //Password confirm
+                if (NewPass.equals(Passconfirm)) {
+                    for (int i=0;i<LoginDatabase.size(); i=i+2){
+                        if (NewUser.equalsIgnoreCase(LoginDatabase.get(i))) {
+                            System.out.println("Please choose another username");
+                        } else {
+                            System.out.println("User Account created");
+                            LoginDatabase.add(NewUser);
+                            LoginDatabase.add(NewPass);
+                            Login = true;
+                        }
+                    }
+                } else {
+                    System.out.println("Passwords do not match, Please try again");
+                }
+            } else if (Menuchoice.equalsIgnoreCase("E")){
+                System.out.print("Login\n\n");
+                Login = true;
+            } else {
+                System.out.println("Invalid input, please choose either \"N\" or \"E\"");
+            }
+        }
         while (Username.equals("")){        //Responsible for keeping user trapped if login was not correct
             boolean Lock = true;            //Determines if lock is in effect
             while (Lock) {
                 System.out.println("Username:");
-                Username = in.nextLine();
+                Username = in.nextLine();               //Username input
                 System.out.println("Password:");
-                String Password = in.nextLine();
-                String Lockuser = LoginDatabase.get(0);
-                String Lockpass = LoginDatabase.get(1);
-                if (Username.equalsIgnoreCase(Lockuser)) {
+                String Password = in.nextLine();        //Password input
+                String Lockpass = null;
+                boolean Found = false;
+                for (int i=0;i<LoginDatabase.size(); i=i+2) {
+                    if (Username.equalsIgnoreCase(LoginDatabase.get(i))) {
+                        Found = true;
+                        Lockpass = LoginDatabase.get(i+1);
+                    }
+                }
+                if (Found) {
                     if (attempts == 3) {
                         System.out.println("3 attempts used, try again later");     //if attempts are used up prevents login
                     } else {
