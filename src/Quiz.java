@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Quiz {
     public static void main(String[] args) {
         int attempts = 0;           //login attempt counter
-        String Username = "";           //
-        ArrayList<String> LoginDatabase = new ArrayList<>(Arrays.asList("admin","Password123"));
+        String Username = "";           //Empty string introduced before login loop which uses it as a condition
+        ArrayList<String> LoginDatabase = new ArrayList<>(Arrays.asList("admin","Password123"));    //Creates Login database that includes username and password
         Scanner in = new Scanner(System.in);
         boolean Login = false;
         while (!Login) {
@@ -15,35 +15,35 @@ public class Quiz {
             String Menuchoice = in.nextLine();
             if (Menuchoice.equalsIgnoreCase("N")){
                 System.out.println("New Username:");
-                String NewUser = in.nextLine();                   //New Username input
+                String NewUser = in.nextLine();                     //New Username input
                 System.out.println("New Password:");
-                String NewPass = in.nextLine();             //New Password input
+                String NewPass = in.nextLine();                     //New Password input
                 System.out.println("Confirm Password");
-                String Passconfirm = in.nextLine();         //Password confirm
+                String Passconfirm = in.nextLine();                 //Password confirm
                 if (NewPass.equals(Passconfirm)) {
                     boolean Found = false;
-                    for (int i=0;i<LoginDatabase.size(); i=i+2){
+                    for (int i=0;i<LoginDatabase.size(); i=i+2){                    //for loop containing check to see if new username is already in database
                         if (NewUser.equalsIgnoreCase(LoginDatabase.get(i))) {
                             Found = true;
                             break;
                         }
                     }
-                    if (Found) {
+                    if (Found) {                                                    //Once new username is confirmed to already exist returns error message before sending them back to start.
                         System.out.println("Please choose another username");
                     } else {
-                        System.out.println("User Account created");
+                        System.out.println("User Account created");                 //Creates a new user account before sending them to login screen
                         LoginDatabase.add(NewUser);
                         LoginDatabase.add(NewPass);
                         Login = true;
                     }
                 } else {
-                    System.out.println("Passwords do not match, Please try again");
+                    System.out.println("Passwords do not match, Please try again"); //Error message when new password doesn't match password confirmation
                 }
             } else if (Menuchoice.equalsIgnoreCase("E")){
-                System.out.print("Login\n\n");
+                System.out.print("\nLogin\n\n");                                    //Sends user to login
                 Login = true;
             } else {
-                System.out.println("Invalid input, please choose either \"N\" or \"E\"");
+                System.out.println("Invalid input, please choose either \"N\" or \"E\"");       //Informs user that input doesn't match requirements
             }
         }
         while (Username.equals("")){        //Responsible for keeping user trapped if login was not correct
@@ -56,9 +56,9 @@ public class Quiz {
                 String Lockpass = null;
                 boolean Found = false;
                 for (int i=0;i<LoginDatabase.size(); i=i+2) {
-                    if (Username.equalsIgnoreCase(LoginDatabase.get(i))) {
+                    if (Username.equalsIgnoreCase(LoginDatabase.get(i))) {                  //Checks if User is in login database
                         Found = true;
-                        Lockpass = LoginDatabase.get(i+1);
+                        Lockpass = LoginDatabase.get(i+1);                                  //creates a variable with password in database to later compare against entered password
                     }
                 }
                 if (Found) {
