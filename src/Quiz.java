@@ -8,6 +8,8 @@ public class Quiz {
         String Username = "";           //Empty string introduced before login loop which uses it as a condition
         ArrayList<String> LoginDatabase = new ArrayList<>(Arrays.asList("admin","Password123"));    //Creates Login database that includes username and password
         Scanner in = new Scanner(System.in);
+
+        //Start loop
         boolean Login = false;
         while (!Login) {
             System.out.println("(N)New or (E)Existing User?");
@@ -46,44 +48,47 @@ public class Quiz {
                 System.out.println("Invalid input, please choose either \"N\" or \"E\"");       //Informs user that input doesn't match requirements
             }
         }
-        while (Username.equals("")){        //Responsible for keeping user trapped if login was not correct
-            boolean Lock = true;            //Determines if lock is in effect
-            while (Lock) {
-                System.out.println("Username:");
-                Username = in.nextLine();               //Username input
-                System.out.println("Password:");
-                String Password = in.nextLine();        //Password input
-                String Lockpass = null;
-                boolean Found = false;
-                for (int i=0;i<LoginDatabase.size(); i=i+2) {
-                    if (Username.equalsIgnoreCase(LoginDatabase.get(i))) {                  //Checks if User is in login database
-                        Found = true;
-                        Lockpass = LoginDatabase.get(i+1);                                  //creates a variable with password in database to later compare against entered password
-                    }
-                }
-                if (Found) {
-                    if (attempts == 3) {
-                        System.out.println("3 attempts used, try again later");     //if attempts are used up prevents login
-                    } else {
-                        if (Password.equals(Lockpass)) {
-                            Lock = false;                       //Lets user out of both loops
-                        } else {
-                            attempts = attempts + 1;
-                            if (attempts == 3){
-                                System.out.println("3 attempts used, try again later");     //initial attempts used up message
-                            } else {
-                                System.out.println("Incorrect username/password, Try again");   //lets user know login is incorrect (password at fault)
-                            }
-                        }
-                    }
 
-                } else {
-                    System.out.println("Incorrect username/password, Try again");               //lets user know login is incorrect (username at fault)
+        //Login Loop
+        boolean Lock = true;            //Determines if lock is in effect
+        while (Lock) {
+            System.out.println("Username:");
+            Username = in.nextLine();               //Username input
+            System.out.println("Password:");
+            String Password = in.nextLine();        //Password input
+            String Lockpass = null;
+            boolean Found = false;
+            for (int i=0;i<LoginDatabase.size(); i=i+2) {
+                if (Username.equalsIgnoreCase(LoginDatabase.get(i))) {                  //Checks if User is in login database
+                    Found = true;
+                    Lockpass = LoginDatabase.get(i+1);                                  //creates a variable with password in database to later compare against entered password
                 }
             }
+            if (Found) {
+                if (attempts == 3) {
+                    System.out.println("3 attempts used, try again later");     //if attempts are used up prevents login
+                } else {
+                    if (Password.equals(Lockpass)) {
+                        Lock = false;                       //Lets user out of both loops
+                    } else {
+                        attempts = attempts + 1;
+                        if (attempts == 3){
+                            System.out.println("3 attempts used, try again later");     //initial attempts used up message
+                        } else {
+                            System.out.println("Incorrect username/password, Try again");   //lets user know login is incorrect (password at fault)
+                        }
+                    }
+                }
+
+            } else {
+                System.out.println("Incorrect username/password, Try again");               //lets user know login is incorrect (username at fault)
+            }
         }
+
         System.out.println("Login successful");
         System.out.println(" ");                                    //gap between lines to improve user experience
+
+        //Quiz
         System.out.println("Welcome to Prak's Quiz");
         System.out.println(" ");                                    //gap between lines to improve user experience
         int Points = 0;                                             //Point counter
@@ -174,7 +179,7 @@ public class Quiz {
             }
         }
         System.out.println(" ");                                            //gap between lines to improve user experience
-        System.out.println("Well done on completing this quiz");
+        System.out.println("Well done "+Username+" on completing this quiz");
         System.out.println("Your score is "+Points);                        //Score output message
         System.out.println("You got "+(3-Points)+" questions wrong");       //mentions number of questions wrong
     }
