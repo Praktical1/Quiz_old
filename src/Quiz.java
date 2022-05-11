@@ -21,16 +21,20 @@ public class Quiz {
                 System.out.println("Confirm Password");
                 String Passconfirm = in.nextLine();         //Password confirm
                 if (NewPass.equals(Passconfirm)) {
+                    boolean Found = false;
                     for (int i=0;i<LoginDatabase.size(); i=i+2){
                         if (NewUser.equalsIgnoreCase(LoginDatabase.get(i))) {
-                            System.out.println("Please choose another username");
-                        } else {
-                            System.out.println("User Account created");
-                            LoginDatabase.add(NewUser);
-                            LoginDatabase.add(NewPass);
-                            Login = true;
+                            Found = true;
                             break;
                         }
+                    }
+                    if (Found) {
+                        System.out.println("Please choose another username");
+                    } else {
+                        System.out.println("User Account created");
+                        LoginDatabase.add(NewUser);
+                        LoginDatabase.add(NewPass);
+                        Login = true;
                     }
                 } else {
                     System.out.println("Passwords do not match, Please try again");
